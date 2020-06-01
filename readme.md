@@ -1,5 +1,15 @@
 ![Image of social preview](https://repository-images.githubusercontent.com/268621114/57358980-a465-11ea-957a-95de816a149e)
 
+### Super Fast start guide
+ * clone `.env.example` to `.env`
+ * set DB name, DB user and DB password on `.env`
+ * run `docker-compose up -d`
+ * configure `config.yml` for your credentials
+ * run `docker-compose exec app php composer.phar install` to install vendors
+ * run `docker-compose exec app php composer.phar dump` to restart autoloader
+ * wait docker to complete build process ... it will take 10 or 15 minutes max
+ * go to `http://localhost:34423/` and enjoy the life :D 
+ 
 ### Important Rules
  * **Don't** use the real DB for Testing, instead use SqLite adapter for Unit Testing
  * **Don't** expose secrets on source code, instead use `config.yml`.
