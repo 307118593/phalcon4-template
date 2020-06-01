@@ -3,12 +3,13 @@
 ### Super Fast start guide
  * clone `.env.example` to `.env`
  * set DB name, DB user and DB password on `.env`
- * run `docker-compose up -d`
  * configure `config.yml` for your credentials
+ * run `docker-compose up -d`
+ * wait docker to complete build process ... it will take 10 or 15 minutes max
  * run `docker-compose exec app php composer.phar install` to install vendors
  * run `docker-compose exec app php composer.phar dump` to restart autoloader
- * wait docker to complete build process ... it will take 10 or 15 minutes max
  * go to `http://localhost:34423/` and enjoy the life :D 
+ * feel free to Contribute, open Pull requests and add your bugs on [Issues](https://github.com/samirmh-dev/phalcon4-template/issues)
  
 ### Important Rules
  * **Don't** use the real DB for Testing, instead use SqLite adapter for Unit Testing
@@ -31,11 +32,8 @@
  * Add some common tasks (clear cache, clear session and etc.)
 
 ### System Requirements
- * PHP **^7.4.5**
-    * Required extentions:
-        * YAML
-        * PDO
-        * OpenSSL
+ * Docker installed on your machine (Docker desktop or / Docker for linux)
+ * Min: 1GB ram
  
 ### Helper definitions
 
