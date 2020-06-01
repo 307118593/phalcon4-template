@@ -1,3 +1,5 @@
+![Image of social preview](https://repository-images.githubusercontent.com/268621114/57358980-a465-11ea-957a-95de816a149e)
+
 ### Important Rules
  * **Don't** use the real DB for Testing, instead use SqLite adapter for Unit Testing
  * **Don't** expose secrets on source code, instead use `config.yml`.
