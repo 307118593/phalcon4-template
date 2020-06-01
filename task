@@ -1,0 +1,41 @@
+#!/usr/bin/env php
+<?php
+
+use App\Core\Task\Console;
+
+error_reporting(E_ALL);
+$root = dirname('./');
+
+$arguments = [];
+foreach ($argv as $k => $arg) {
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
+}
+
+try {
+    /** Autoload dependencies */
+    require_once 'vendor/autoload.php';
+
+    /** Run Task setup */
+    (new Console($root))->build($arguments);
+
+} catch (Throwable $e) {
+    /** Catch any throwable */
+    $trace = null;
+
+    error_log($e->getMessage());
+    logger()->error($e->getMessage());
+
+    $trace = $e->getTrace();
+
+    Sentry\captureException($e);
+
+    echo $e->getMessage().PHP_EOL;
+    echo nl2br(htmlentities($e->getTraceAsString()));
+    exit;
+}

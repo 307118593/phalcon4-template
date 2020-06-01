@@ -1,0 +1,5 @@
+/config.yml
+/vendor/
+/.idea
+/.phpunit.result.cache
+.env

@@ -1,0 +1,75 @@
+version: '3.7'
+
+networks:
+  mainbridge:
+    name: mainbridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.10.1.0/24"
+
+volumes:
+  db:
+    driver: local
+
+services:
+  nginx:
+    container_name: nginx
+    hostname:       nginx
+    restart:        always
+    image:          nginx:latest
+    tty:            true
+    volumes:
+      - ./:/home/app
+      - ./.docker:/etc/nginx/conf.d
+    depends_on:
+      - app
+    ports:
+      - 34423:80
+    networks:
+      mainbridge:
+        ipv4_address: "10.10.1.4"
+
+  app:
+    container_name: app
+    hostname:       app
+    restart:        always
+    image:          samirmh/phalcon4:latest
+    tty:            true
+    volumes:
+      - ./:/home/app
+      - ./.docker/local.ini:/usr/local/etc/php/conf.d/local.ini
+    depends_on:
+      - redis
+    networks:
+      mainbridge:
+        ipv4_address: "10.10.1.2"
+    working_dir:    /home/app
+
+  db:
+    image:          postgres:latest
+    hostname:       db
+    container_name: db
+    restart:        always
+    volumes:
+      - db:/var/lib/postgresql/data
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${PG_DATABASE}
+      - POSTGRES_USER=${PG_USERNAME}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+    ports:
+      - 34424:5432
+    networks:
+      mainbridge:
+        ipv4_address: "10.10.1.5"
+
+  redis:
+    container_name: redis
+    hostname:       redis
+    restart:        always
+    image:          redis:latest
+    networks:
+      mainbridge:
+        ipv4_address: "10.10.1.3"
