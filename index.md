@@ -1,16 +1,34 @@
 ![Image of social preview](https://repository-images.githubusercontent.com/268621114/57358980-a465-11ea-957a-95de816a149e)
 
-### Important Rules
+### 🔥 Use template functionality and start to coding easly ⚡
+
+ * Use this template to create your new public or private repository from [HERE](https://github.com/samirmh-dev/phalcon4-template/generate) or green button on top right side above. It will ready in a few seconds: ⚡
+
+ ![image](https://user-images.githubusercontent.com/54883542/83452381-a5e52280-a469-11ea-9acb-967dd64eb483.png)
+
+### 🔥 Super Fast start guide ⚡
+ * clone `.env.example` to `.env`
+ * set DB name, DB user and DB password on `.env`
+ * clone `config.example.yml` to `config.yml` 
+ * configure `config.yml` with your credentials
+ * run `docker-compose up -d`
+ * wait docker to complete build process ... it will take 10 or 15 minutes max
+ * run `docker-compose exec app php composer.phar install` to install vendors
+ * run `docker-compose exec app php composer.phar dump` to restart autoloader
+ * go to `http://localhost:34423/` and enjoy the life :D 
+ * feel free to Contribute, open Pull requests and add your bugs on [Issues](https://github.com/samirmh-dev/phalcon4-template/issues)
+
+### 🔥 Important Rules ⚡
  * **Don't** use the real DB for Testing, instead use SqLite adapter for Unit Testing
  * **Don't** expose secrets on source code, instead use `config.yml`.
  * **Don't** forget to clone the new config variables to `example.config.yml` variable.
  * **Don't** forget to create migrations for the new tables.
  * **Don't** directly create Models, Controllers, Modules for application, instead use CLI commands to generate from stubs.
- 
-### TODO
+
+### 🔥 TODO ⚡
 
  * APCU
- * ~~Redis~~ 
+ * Redis 
  * ElasticSearch Client
  * Models
  * Middleware
@@ -20,14 +38,11 @@
  * Stubs for CLI creation
  * Add some common tasks (clear cache, clear session and etc.)
 
-### System Requirements
- * PHP **^7.4.5**
-    * Required extentions:
-        * YAML
-        * PDO
-        * OpenSSL
- 
-### Helper definitions
+### 🔥 System Requirements ⚡
+ * Docker installed on your machine (Docker desktop or / Docker for linux)
+ * Min: 1GB ram
+
+### 🔥 Helper definitions ⚡
 
  * ````app()```` returns current application instance.
  * ````app()->getRootPath()```` returns the full base path of root directory (for ex: `/home/api/www/`).
@@ -52,7 +67,7 @@
     * `session()->has('test-key')` returns **TRUE**|**FALSE** related to existence of key `test-key`
 
 
-### Tricks
+### 🔥 Tricks ⚡
 
  * How to disable **exception reporting** to **Sentry**? 
     * Open specific exception class and override `public bool $sentry = FALSE;` property 
@@ -68,8 +83,8 @@
      * `vendor/bin/phpunit ./tests/ExampleTest --filter=test_example_action_response`    
  * How to run task with specific action?
      *  `php task \\App\\Example\\Task\\Example example`   
-     
-### Example responses
+
+### 🔥 Example responses ⚡ 
 
  * Example 404 response JSON:
  ````json
