@@ -3,7 +3,8 @@
 ### Super Fast start guide
  * clone `.env.example` to `.env`
  * set DB name, DB user and DB password on `.env`
- * configure `config.yml` for your credentials
+ * clone `config.example.yml` to `config.yml` 
+ * configure `config.yml` with your credentials
  * run `docker-compose up -d`
  * wait docker to complete build process ... it will take 10 or 15 minutes max
  * run `docker-compose exec app php composer.phar install` to install vendors
