@@ -5,10 +5,10 @@ namespace App\Example\Controllers;
 use App\Core\Controllers\BaseController;
 use App\Example\ExampleModel;
 
-class ExampleController extends BaseController{
+class ExampleController extends BaseController {
 
     public function exampleAction() {
-        return $this->response([],200,'Everything working!');
+        return $this->response([], 200, 'Everything working!');
     }
 
     /**
@@ -17,8 +17,9 @@ class ExampleController extends BaseController{
      * @throws \Exception
      */
     public function exampleModelAction() {
-        $rows = ExampleModel::findOrFail(1);
+        $rows = ExampleModel::findOrFail(1)->toArray();
 
-        dd($rows);
+        return $this->response($rows);
     }
+
 }
