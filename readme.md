@@ -28,7 +28,6 @@
 ### 🔥 TODO ⚡
 
  * ElasticSearch Client
- * Models
  * Middleware
  * Migrations
  * Storage
