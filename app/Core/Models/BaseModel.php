@@ -11,7 +11,7 @@ class BaseModel extends \Phalcon\Mvc\Model {
      */
     public function initialize() : void {
         if(is_null($this->table)) {
-            $this->table = preg_replace('/(?!^)[[:upper:]][[:lower:]]/', '$0', preg_replace('/(?!^)[[:upper:]]+/', '_$0', __CLASS__));
+            $this->table = strtolower(preg_replace('/(?!^)[[:upper:]][[:lower:]]/', '$0', preg_replace('/(?!^)[[:upper:]]+/', '_$0', substr(strrchr(get_class($this), "\\"), 1))));
         }
 
         $this->setSource($this->table);
