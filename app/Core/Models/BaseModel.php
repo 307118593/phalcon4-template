@@ -7,6 +7,23 @@ class BaseModel extends \Phalcon\Mvc\Model {
     protected ?string $table = NULL;
 
     /**
+     * Search for given parameters and fail
+     * if not exists
+     *
+     * @param null $parameters
+     *
+     * @throws \Exception
+     * @return bool|\Phalcon\Mvc\ModelInterface
+     */
+    public static function findOrFail($parameters = NULL) : self {
+        $result = self::findFirst($parameters);
+
+        if(empty($result)) throw new \Exception('Such records doesn\'t exists on ' . substr(strrchr(static::class, "\\"), 1));
+
+        return $result;
+    }
+
+    /**
      * Initializes Model configuration
      */
     public function initialize() : void {

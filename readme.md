@@ -71,6 +71,8 @@
  * How to define table name of **Model**
     * By default, table name will be **underscored** version of Model name. For example, if you create model with name `News` table name will be `news`. If you create with name `NewsNotes`, table name will be `news_notes`.
     * If you want to add custom table name, just add `protected ?string $table = 'example_table';` property to model class. ExampleModels added for this purpose. 
+ * How to fail if Model can't find searched row ?
+    * We have implemented `findOrFail` method from Laravel architecture. Usage: `ExampleModel::findOrFail(2)`, this will search for row with ID 2 and will fail if not exists on DB. 
  * How to disable **exception reporting** to **Sentry**? 
     * Open specific exception class and override `public bool $sentry = FALSE;` property 
  * How to regenerate loaded class (sometimes it happens that some classes not getting recognized)?

@@ -11,8 +11,13 @@ class ExampleController extends BaseController{
         return $this->response([],200,'Everything working!');
     }
 
+    /**
+     * Example code for model <-> table searching
+     *
+     * @throws \Exception
+     */
     public function exampleModelAction() {
-        $rows = ExampleModel::findFirst(1);
+        $rows = ExampleModel::findOrFail(1);
 
         dd($rows);
     }
