@@ -1,5 +1,6 @@
 env: dev # dev, user-local, samir-local ... (don't use production environment on local development)
 appPath: !appPath # don't override this
+appName: "phalcon-4"
 
 # application dirs
 dirs:

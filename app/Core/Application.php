@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Core\Providers\ApcuServiceProvider;
 use App\Core\Providers\ConfigServiceProvider;
 use App\Core\Providers\CryptServiceProvider;
 use App\Core\Providers\DatabaseServiceProvider;
@@ -74,6 +75,7 @@ class Application {
 
     private function bindProviders() : void {
         $this->di->register(new ConfigServiceProvider());
+        $this->di->register(new ApcuServiceProvider());
         $this->di->register(new LoggerServiceProvider());
         $this->di->register(new ViewServiceProvider());
         $this->di->register(new RouteServiceProvider());
