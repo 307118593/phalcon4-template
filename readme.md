@@ -66,9 +66,11 @@
     * `session()->get('test-key')` returns `test`
     * `session()->has('test-key')` returns **TRUE**|**FALSE** related to existence of key `test-key`
 
-
 ### 🔥 Tricks ⚡
 
+ * How to define table name of **Model**
+    * By default, table name will be **underscored** version of Model name. For example, if you create model with name `News` table name will be `news`. If you create with name `NewsNotes`, table name will be `news_notes`.
+    * If you want to add custom table name, just add `protected ?string $table = 'example_table';` property to model class. ExampleModels added for this purpose. 
  * How to disable **exception reporting** to **Sentry**? 
     * Open specific exception class and override `public bool $sentry = FALSE;` property 
  * How to regenerate loaded class (sometimes it happens that some classes not getting recognized)?
