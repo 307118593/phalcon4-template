@@ -12,7 +12,7 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class DatabaseServiceProvider implements ServiceProviderInterface {
 
-    protected string $name = 'database-%s';
+    protected string $name = 'db';
 
     const ADAPTERS = [
         'mysql'   => Mysql::class,
@@ -32,7 +32,7 @@ class DatabaseServiceProvider implements ServiceProviderInterface {
 
             $config  = $this->prepareConfig($key,$database);
 
-            di()->set(sprintf($this->name, $key), fn() => new $adapter($config));
+            di()->set($this->name, fn() => new $adapter($config));
         }
     }
 

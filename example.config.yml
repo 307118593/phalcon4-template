@@ -7,7 +7,7 @@ dirs:
   tmp: !appPath 'tmp' # this will parsed as: /[home-path]/tmp
 
 sentry:
-  dsn: 'https://[...]@sentry.io/[...]' # sentry report uri
+  dsn: 'https://x@sentry.io/xx' # sentry report uri
 
 redis:
   host: "10.10.1.3"

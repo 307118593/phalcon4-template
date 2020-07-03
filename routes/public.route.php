@@ -12,3 +12,5 @@
 $router->setDefaultNamespace('App\Example\Controllers');
 
 $router->addGet('/example', 'Example::example');
+
+$router->addGet('/example-model', 'Example::exampleModel');

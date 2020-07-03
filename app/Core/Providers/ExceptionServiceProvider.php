@@ -20,7 +20,9 @@ class ExceptionServiceProvider implements ServiceProviderInterface {
             $sentryConfig['release'] = config('app-name')." - commit: {$release}";
         }
 
-        \Sentry\init($sentryConfig);
+        if(app()->environment('production')) {
+            \Sentry\init($sentryConfig);
+        }
     }
 
     /**

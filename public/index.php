@@ -29,7 +29,7 @@ try {
     if(!app()->environment('production')) $trace = $e->getTrace();
 
     /** if running on production */
-    if($e->sentry && !app()->environment('local')) Sentry\captureException($e);
+    if(!empty($e->sentry) && $e->sentry && !app()->environment('local')) Sentry\captureException($e);
 
     echo $response;
 
