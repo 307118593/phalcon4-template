@@ -34,7 +34,7 @@ if(!function_exists('prettyResponse')) {
             'code'    => (int) $code,
             'message' => $message,
             'data'    => $data,
-            'rat'    =>date('c'),
+            'rat'     => date('c'),
             'trace'   => $trace,
         ], JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
     }
@@ -105,5 +105,23 @@ if(!function_exists('session')) {
      */
     function session() : Phalcon\Session\Manager {
         return di()->get('session');
+    }
+}
+
+if(!function_exists('apcu')) {
+    /**
+     * @return \Phalcon\Cache\Adapter\Apcu
+     */
+    function apcu() : \Phalcon\Cache\Adapter\Apcu {
+        return di()->get('apcu');
+    }
+}
+
+if(!function_exists('redis')) {
+    /**
+     * @return \Phalcon\Cache\Adapter\Redis
+     */
+    function redis() : \Phalcon\Cache\Adapter\Redis {
+        return di()->get('redis');
     }
 }

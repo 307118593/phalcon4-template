@@ -27,8 +27,6 @@
  
 ### 🔥 TODO ⚡
 
- * APCU
- * Redis 
  * ElasticSearch Client
  * Models
  * Middleware
@@ -50,6 +48,8 @@
  * ````app()->environment()```` returns current application environment (defined in `config.yml`).
  * ````app()->environment('test-env'')```` returns **TRUE** if given environment (`test-env`) is equals to application environment. 
  * ````di()```` returns default DI instance
+ * ````apcu()```` returns default APCU Cache instance
+ * ````redis()```` returns default REDIS Cache instance
  * ````logger()```` writes given log to daily log file located at `logs` folder
     * `logger()->error('...')` 
     * `logger()->debug('...')`

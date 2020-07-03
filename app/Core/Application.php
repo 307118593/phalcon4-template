@@ -9,6 +9,7 @@ use App\Core\Providers\DatabaseServiceProvider;
 use App\Core\Providers\ExceptionServiceProvider;
 use App\Core\Providers\LoggerServiceProvider;
 use App\Core\Providers\ModelsMetadataServiceProvider;
+use App\Core\Providers\RedisServiceProvider;
 use App\Core\Providers\RouteServiceProvider;
 use App\Core\Providers\SessionServiceProvider;
 use App\Core\Providers\ViewServiceProvider;
@@ -40,6 +41,20 @@ class Application {
         $this->bindProviders();
     }
 
+    private function bindProviders() : void {
+        $this->di->register(new ConfigServiceProvider());
+        $this->di->register(new ApcuServiceProvider());
+        $this->di->register(new RedisServiceProvider());
+        $this->di->register(new LoggerServiceProvider());
+        $this->di->register(new ViewServiceProvider());
+        $this->di->register(new RouteServiceProvider());
+        $this->di->register(new ExceptionServiceProvider());
+        $this->di->register(new CryptServiceProvider());
+        $this->di->register(new DatabaseServiceProvider());
+        $this->di->register(new ModelsMetadataServiceProvider());
+        $this->di->register(new SessionServiceProvider());
+    }
+
     /**
      * @return string
      */
@@ -47,8 +62,8 @@ class Application {
         /** @var \Phalcon\Http\ResponseInterface $response */
         $response = $this->app->handle($_SERVER['REQUEST_URI']);
 
-        $response->setHeader('Content-Type','application/json');
-        $response->setHeader('Content-Length',strlen($response->getContent()));
+        $response->setHeader('Content-Type', 'application/json');
+        $response->setHeader('Content-Length', strlen($response->getContent()));
 
         return $response->send()->getContent();
     }
@@ -71,19 +86,6 @@ class Application {
         if($environment) return config('env') === $environment;
 
         return config('env');
-    }
-
-    private function bindProviders() : void {
-        $this->di->register(new ConfigServiceProvider());
-        $this->di->register(new ApcuServiceProvider());
-        $this->di->register(new LoggerServiceProvider());
-        $this->di->register(new ViewServiceProvider());
-        $this->di->register(new RouteServiceProvider());
-        $this->di->register(new ExceptionServiceProvider());
-        $this->di->register(new CryptServiceProvider());
-        $this->di->register(new DatabaseServiceProvider());
-        $this->di->register(new ModelsMetadataServiceProvider());
-        $this->di->register(new SessionServiceProvider());
     }
 
 }
